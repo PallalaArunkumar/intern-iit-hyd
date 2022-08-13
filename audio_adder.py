@@ -3,11 +3,11 @@ import pandas as pd
 from pydub import AudioSegment as AS
 import os
 
-c_files=os.listdir('c_data')
+c_files=os.listdir('c_data')  # loading all the csv files in the folder
 #print(c_files)
 #print(type(c_files))
 
-for w in c_files:
+for w in c_files:      #for each csv file we repeat this loop
     q=w[:-4]  			#custom modifications
     class_name=w[:-10]
     label=w[:-10]
