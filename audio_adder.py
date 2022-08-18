@@ -41,5 +41,5 @@ for w in c_files:      #for each csv file we repeat this loop
             c_s=s1+s2+s3
             c_s.export(des+'/'+f1[i+2][6:],format='wav') #saving the audio files.
             print("***",i,"***",i+1,"***",i+2)#just to check
-            f.write(des+'/'+f1[i+2][6:]+','+label+'\n') # creating new csv file as data created
+            f.write('audio/'+f1[i+2][6:]+','+label+'\n') # creating new csv file as data created
         print(label)
