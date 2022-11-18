@@ -75,6 +75,14 @@ def train(model,lossfn,optimizer,train_loader,test_loader,epochs,train_losses,va
 		
 		
 		print(f'Epoch -{epoch} Valid-Loss: {np.mean(valid_loss[-1])} Valid-Accuracy:{accuracy}')
+
+##### changing learning rate funtion ######################
+def lr_decay(optimizer, epoch):
+    if epoch%20==0:
+        new_lr = learning_rate / (10**(epoch//20))
+        optimizer = setlr(optimizer, new_lr)
+        print(f'Changed learning rate to {new_lr}')
+    return optimizer
 		
 if __name__ == "__main__":
 	SAMPLING_RATE = 16000
