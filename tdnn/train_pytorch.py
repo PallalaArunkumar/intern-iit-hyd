@@ -77,11 +77,22 @@ def train(model,lossfn,optimizer,train_loader,test_loader,epochs,train_losses,va
 		print(f'Epoch -{epoch} Valid-Loss: {np.mean(valid_loss[-1])} Valid-Accuracy:{accuracy}')
 
 ##### changing learning rate funtion ######################
+def setlr(optimizer, lr):
+    for param_group in optimizer.param_groups:
+        param_group['lr'] = lr
+    return optimizer
+
+def get_lr(optimizer):
+	for param_group in optimizer.param_groups:
+		return param_group['lr']
+		
 def lr_decay(optimizer, epoch):
     if epoch%20==0:
-        new_lr = learning_rate / (10**(epoch//20))
-        optimizer = setlr(optimizer, new_lr)
-        print(f'Changed learning rate to {new_lr}')
+    	learning_rate = get_lr(optimizer)
+    	print(f'the current learning rate is:{learning_rate}')
+    	new_lr = learning_rate / (10**(epoch//20))
+    	optimizer = setlr(optimizer, new_lr)
+    	print(f'Changed learning rate to {new_lr}')
     return optimizer
 		
 if __name__ == "__main__":
